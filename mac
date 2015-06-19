@@ -183,6 +183,12 @@ if ! command -v rcup >/dev/null; then
   brew_install_or_upgrade 'rcm'
 fi
 
+customizelist=$(ls customize/*.sh)
+for file in $customizelist
+do
+  . "$file"
+done
+
 if [ -f "$HOME/.laptop.local" ]; then
   . "$HOME/.laptop.local"
 fi
