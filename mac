@@ -11,6 +11,21 @@ fancy_echo() {
   printf "\n$fmt\n" "$@"
 }
 
+append_to_hosts() {
+  local text="$1" hosts
+  local skip_new_line="${2:-0}"
+
+  hosts="/etc/hosts"
+
+  if ! grep -Fqs "$text" "$hosts"; then
+    if [ "$skip_new_line" -eq 1 ]; then
+      printf "%s\n" "$text" >> "$hosts"
+    else
+      printf "\n%s\n" "$text" >> "$hosts"
+    fi
+  fi
+}
+
 append_to_zshrc() {
   local text="$1" zshrc
   local skip_new_line="${2:-0}"
