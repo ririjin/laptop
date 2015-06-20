@@ -1,6 +1,9 @@
 #!/bin/sh
 brew_install_or_upgrade 'go'
-mkdir $HOME/gopath
+
+if [ ! -d "$HOME/gopath" ]; then
+  mkdir "$HOME/gopath"
+fi
 
 append_to_zshrc '#Golang PATH'
 append_to_zshrc 'export GOPATH="$HOME/gopath"' 1
