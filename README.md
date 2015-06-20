@@ -24,8 +24,8 @@ Install
 Download, review, then execute the script:
 
 ```sh
-curl --remote-name https://raw.githubusercontent.com/ririjin/laptop/master/mac
-less mac
+git clone https://github.com/ririjin/laptop.git
+cd laptop
 sh mac 2>&1 | tee ~/laptop.log
 ```
 
